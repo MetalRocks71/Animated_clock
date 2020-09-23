@@ -1,95 +1,80 @@
 .clock {
-    box-sizing: border-box;
-    width: 225px;
-    height: 225px;
-    border: 2px solid black;
-    border-radius: 50%;
-    margin: 0 auto;
-    transform: rotate(-90deg);
-    margin-top: 100px;
-   background: linear-gradient(90deg, rgba(0, 212, 255, 1) 3%, rgba(9, 121, 63, 1) 100%, rgba(2, 0, 36, 1) 100%);
-
-  
-
-}
-
-.clock:after {
- 
-    content: "";
-    display: block;
-    
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    
-
-    transform: translate(-50%, -50%);
-
-    border: 8px solid black;
-    border-radius: 50%;
+  box-sizing: border-box;
+  width: 225px;
+  height: 225px;
+  border: 2px solid black;
+  border-radius: 50%;
+  margin: 0 auto;
+  transform: rotate(-90deg);
+  margin-top: 100px;
+  background-image: url(image/clock.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-position: -90deg; */
+  z-index: 1;
 }
 
 .hours,
 .minutes,
 .seconds {
-
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
-.hours:after,
-.minutes:after,
-.seconds:after {
-
-    content: "";
-  
-    display: block;
-    margin: 50% 50%;
-    width: 50%;
-    transform-origin: left top;
-    animation: clock linear infinite;
-
-
+.clock::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 8px solid black;
+  border-radius: 50%;
 }
 
-.hours:after {
+.hours::after,
+.minutes::after,
+.seconds::after {
+  content: "";
 
-    width: 40%;
-    outline: 6px solid black;
-    animation-duration: 84600s;
-    /* animation-duration: clock linear infinite; */
+  display: block;
+  margin: 50% 50%;
+  width: 50%;
+  transform-origin: left top;
+  animation: clock linear infinite;
 }
 
-.minutes:after {
-
-    width: 48%;
-    outline: 3px solid black;
-    animation-duration: 3600s;
-    /* animation-duration: clock linear infinite; */
+.hours::after {
+  width: 40%;
+  outline: 6px solid black;
+  animation-duration: 84600s;
+  /* animation-duration: clock linear infinite; */
 }
 
+.minutes::after {
+  width: 45%;
+  outline: 3px solid black;
+  animation-duration: 3600s;
+  /* animation-duration: clock linear infinite; */
+}
 
-.seconds:after {
-
-    width: 50%;
-    outline: 1px solid black;
-    animation-duration: 60s;
-    /* animation-duration: clock linear infinite; */
+.seconds::after {
+  width: 48%;
+  outline: 1px solid black;
+  animation-duration: 60s;
+  /* animation-duration: clock linear infinite; */
 }
 
 @keyframes clock {
+  0% {
+    transform: rotate(0deg);
+  }
 
-    0% {
-        transform: rotate(0deg);
-    }
-
-
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }
